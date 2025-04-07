@@ -11,5 +11,5 @@ service:
           yum -y install httpd && \
           cp /workspace/index.html /var/www/html/ && \
           /usr/sbin/httpd -D FOREGROUND
-      imageRepositoryType: ECR_PUBLIC
+      
   
