@@ -9,7 +9,13 @@ service:
           HTTPD_PORT: "80"
         startCommand: |
           yum -y install httpd && \
-          cp /workspace/index.html /var/www/html/ && \
+          cp /index.html /var/www/html/ && \
           /usr/sbin/httpd -D FOREGROUND
-      
-  
+      imageRepositoryType: ECR_PUBLIC
+  healthCheckConfiguration:
+    protocol: HTTP
+    path: /
+    interval: 10
+    timeout: 5
+    healthyThreshold: 2
+    unhealthyThreshold: 5
