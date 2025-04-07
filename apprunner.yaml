@@ -8,6 +8,6 @@ service:
           PORT: "80" # Explicitly setting the port
         startCommand: |
           yum -y install httpd && \
-          cp /index.html /var/www/html/ && \
+          cp index.html /var/www/html/ && \
           /usr/sbin/httpd -D FOREGROUND
       imageRepositoryType: ECR_PUBLIC
