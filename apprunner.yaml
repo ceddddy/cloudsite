@@ -4,6 +4,8 @@ service:
     imageRepository:
       imageIdentifier: public.ecr.aws/rockylinux/rockylinux:9
       imageConfiguration:
+        runtimeEnvironmentVariables:
+          PORT: "80" # Explicitly setting the port
         startCommand: |
           yum -y install httpd && \
           cp /index.html /var/www/html/ && \
