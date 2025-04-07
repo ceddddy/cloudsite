@@ -1,21 +1,11 @@
 version: 1.0
 service:
-  name: cloudsite-service
   sourceConfiguration:
     imageRepository:
-      imageIdentifier: public.ecr.aws/rockylinux/rockylinux:9 # Base image identical to Dockerfile
+      imageIdentifier: public.ecr.aws/rockylinux/rockylinux:9
       imageConfiguration:
-        runtimeEnvironmentVariables:
-          HTTPD_PORT: "80"
         startCommand: |
           yum -y install httpd && \
           cp /index.html /var/www/html/ && \
           /usr/sbin/httpd -D FOREGROUND
       imageRepositoryType: ECR_PUBLIC
-  healthCheckConfiguration:
-    protocol: HTTP
-    path: /
-    interval: 10
-    timeout: 5
-    healthyThreshold: 2
-    unhealthyThreshold: 5
